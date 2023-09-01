@@ -52,6 +52,7 @@ impl Log for NopLogger {
     fn publish(&self, _: Product, _: &dyn Producible) {}
 }
 
+// We should be able to generate them with a derive proc macro on the Product enum.
 #[macro_export]
 macro_rules! stat {
     ($arg:tt) => {
@@ -59,6 +60,7 @@ macro_rules! stat {
     };
 }
 
+// We could additionally have macros for syslog that are specific to a specific level (info/warning...)
 #[macro_export]
 macro_rules! system {
     ($arg:tt) => {
