@@ -1,14 +1,10 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+use log::{Log, Producible, Product};
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+struct DevNullLogger {}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+impl Log for DevNullLogger {
+    fn publish(&self, _: Product, product: &dyn Producible) {
+        // serialise the product, then drop it.
+        drop(product.prod());
     }
 }

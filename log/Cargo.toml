@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 serde = "1.0.188"
+rmp-serde = "1"
